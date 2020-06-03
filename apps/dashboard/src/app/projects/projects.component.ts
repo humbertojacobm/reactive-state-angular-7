@@ -1,5 +1,8 @@
-import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
+import { Store,
+         select } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Customer,
          Project,
          ProjectsService,
@@ -7,8 +10,6 @@ import { Customer,
          CustomersService,
          ProjectsState }
 from '@workshop/core-data';
-import { Store,
-         select } from '@ngrx/store';
 
 const emptyProject: Project = {
   id: null,
@@ -35,8 +36,9 @@ export class ProjectsComponent implements OnInit {
     private store: Store<ProjectsState>,
     private ns: NotificationsService) {
       this.projects$ = store.pipe(
-        select('projects')
-      )
+        select('projects'),
+        map((projectsState: ProjectsState) => projectsState.projects)
+      );
     }
 
   ngOnInit() {
