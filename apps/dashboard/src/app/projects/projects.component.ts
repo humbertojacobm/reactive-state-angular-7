@@ -8,7 +8,10 @@ import { Customer,
          ProjectsService,
          NotificationsService,
          CustomersService,
-         ProjectsState }
+         ProjectsState,
+         AddProject,
+         UpdateProject,
+         DeleteProject}
 from '@workshop/core-data';
 
 const emptyProject: Project = {
@@ -76,19 +79,19 @@ export class ProjectsComponent implements OnInit {
   }
 
   createProject(project) {
-    this.store.dispatch({type: 'create', payload: project});
+    this.store.dispatch(new AddProject(project));
     this.ns.emit('Project created!');
     this.getProjects();
   }
 
   updateProject(project) {
-    this.store.dispatch({type: 'update', payload: project});
+    this.store.dispatch(new UpdateProject(project));
     this.ns.emit('Project saved!');
     this.getProjects();
   }
 
   deleteProject(project) {
-    this.store.dispatch({type: 'delete', payload: project});
+    this.store.dispatch(new DeleteProject(project));
     this.ns.emit('Project deleted!');
     this.getProjects();
   }
