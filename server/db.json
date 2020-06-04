@@ -94,14 +94,14 @@
   "projects": [
     {
       "id": "1",
-      "title": "Project One",
+      "title": "Project Onedddd",
       "details": "This is a sample project",
       "percentComplete": 20,
       "approved": false,
       "startDate": null,
       "targetDate": null,
       "completionDate": null,
-      "customerId": "1"
+      "customerId": "2"
     },
     {
       "id": "2",
