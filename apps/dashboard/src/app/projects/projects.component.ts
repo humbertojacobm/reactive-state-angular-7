@@ -11,7 +11,9 @@ import { Customer,
          ProjectsState,
          AddProject,
          UpdateProject,
-         DeleteProject}
+         DeleteProject,
+         LoadProjects,
+         initialProjects}
 from '@workshop/core-data';
 
 const emptyProject: Project = {
@@ -40,7 +42,8 @@ export class ProjectsComponent implements OnInit {
     private ns: NotificationsService) {
       this.projects$ = store.pipe(
         select('projects'),
-        map((projectsState: ProjectsState) => projectsState.projects)
+        map(data => data.entities),
+        map(data => Object.keys(data).map(k => data[k])),
       );
     }
 
@@ -68,6 +71,7 @@ export class ProjectsComponent implements OnInit {
 
   getProjects() {
     // this.projects$ = this.projectsService.all();
+    this.store.dispatch(new LoadProjects(initialProjects));
   }
 
   saveProject(project) {
@@ -81,19 +85,16 @@ export class ProjectsComponent implements OnInit {
   createProject(project) {
     this.store.dispatch(new AddProject(project));
     this.ns.emit('Project created!');
-    this.getProjects();
   }
 
   updateProject(project) {
     this.store.dispatch(new UpdateProject(project));
     this.ns.emit('Project saved!');
-    this.getProjects();
   }
 
   deleteProject(project) {
-    this.store.dispatch(new DeleteProject(project));
+    this.store.dispatch(new DeleteProject(project.id));
     this.ns.emit('Project deleted!');
-    this.getProjects();
   }
 }
 
