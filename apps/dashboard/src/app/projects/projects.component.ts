@@ -13,6 +13,7 @@ import { Customer,
          UpdateProject,
          DeleteProject,
          LoadProjects,
+         selectAllProjects,
          initialProjects}
 from '@workshop/core-data';
 
@@ -41,9 +42,7 @@ export class ProjectsComponent implements OnInit {
     private store: Store<ProjectsState>,
     private ns: NotificationsService) {
       this.projects$ = store.pipe(
-        select('projects'),
-        map(data => data.entities),
-        map(data => Object.keys(data).map(k => data[k])),
+        select(selectAllProjects)
       );
     }
 
