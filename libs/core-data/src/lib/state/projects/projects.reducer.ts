@@ -64,11 +64,11 @@ export function projectsReducer(
                            {selectedProjectId: action.payload});
     case ProjectsActionTypes.ProjectsLoaded:
       return adapter.addMany(action.payload, state);
-    case ProjectsActionTypes.AddProject:
+    case ProjectsActionTypes.ProjectAdded:
       return adapter.addOne(action.payload, state);
-    case ProjectsActionTypes.UpdateProject:
+    case ProjectsActionTypes.ProjectUpdated:
       return adapter.upsertOne(action.payload, state);
-    case ProjectsActionTypes.DeleteProject:
+    case ProjectsActionTypes.ProjectDeleted:
       return adapter.removeOne(action.payload, state);
     default:
       return state;

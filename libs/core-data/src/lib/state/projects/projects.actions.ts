@@ -30,7 +30,7 @@ export class ProjectsLoaded implements Action {
 
 export class AddProject implements Action {
   readonly type = ProjectsActionTypes.AddProject;
-  constructor(private payload: Project){}
+  constructor(public payload: Project){}
 }
 
 export class ProjectAdded implements Action {
@@ -40,7 +40,7 @@ export class ProjectAdded implements Action {
 
 export class UpdateProject implements Action {
   readonly type = ProjectsActionTypes.UpdateProject;
-  constructor(private payload: Project){}
+  constructor(public payload: Project){}
 }
 
 export class ProjectUpdated implements Action {
@@ -50,7 +50,7 @@ export class ProjectUpdated implements Action {
 
 export class DeleteProject implements Action {
   readonly type = ProjectsActionTypes.DeleteProject;
-  constructor(private payload: Project){}
+  constructor(public payload: Project){}
 }
 
 export class ProjectDeleted implements Action {

@@ -91,7 +91,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   deleteProject(project) {
-    this.store.dispatch(new DeleteProject(project.id));
+    this.store.dispatch(new DeleteProject(project));
     this.ns.emit('Project deleted!');
   }
 }
