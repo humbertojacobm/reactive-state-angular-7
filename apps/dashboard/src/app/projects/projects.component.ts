@@ -37,7 +37,6 @@ export class ProjectsComponent implements OnInit {
   currentProject: Project;
 
   constructor(
-    private projectsService: ProjectsService,
     private customerService: CustomersService,
     private store: Store<ProjectsState>,
     private ns: NotificationsService) {
@@ -70,7 +69,7 @@ export class ProjectsComponent implements OnInit {
 
   getProjects() {
     // this.projects$ = this.projectsService.all();
-    this.store.dispatch(new LoadProjects(initialProjects));
+    this.store.dispatch(new LoadProjects());
   }
 
   saveProject(project) {
