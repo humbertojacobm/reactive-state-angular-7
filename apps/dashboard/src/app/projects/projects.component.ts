@@ -14,7 +14,9 @@ import { Customer,
          DeleteProject,
          LoadProjects,
          selectAllProjects,
-         initialProjects}
+         selectCurrentProject,
+         initialProjects,
+         SelectProject}
 from '@workshop/core-data';
 
 const emptyProject: Project = {
@@ -34,7 +36,7 @@ const emptyProject: Project = {
 export class ProjectsComponent implements OnInit {
   projects$: Observable<Project[]>;
   customers$: Observable<Customer[]>;
-  currentProject: Project;
+  currentProject$: Observable<Project>;
 
   constructor(
     private customerService: CustomersService,
@@ -42,6 +44,9 @@ export class ProjectsComponent implements OnInit {
     private ns: NotificationsService) {
       this.projects$ = store.pipe(
         select(selectAllProjects)
+      );
+      this.currentProject$ = store.pipe(
+        select(selectCurrentProject)
       );
     }
 
@@ -52,11 +57,12 @@ export class ProjectsComponent implements OnInit {
   }
 
   resetCurrentProject() {
-    this.currentProject = emptyProject;
+    // this.currentProject$ = emptyProject;
+    this.store.dispatch(new SelectProject(null));
   }
 
   selectProject(project) {
-    this.currentProject = project;
+    this.store.dispatch(new SelectProject(project.id));
   }
 
   cancel(project) {
