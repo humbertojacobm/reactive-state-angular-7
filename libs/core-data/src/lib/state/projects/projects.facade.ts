@@ -29,7 +29,7 @@ export class ProjectsFacade{
   }
 
   selectProject(project){
-    this.store.dispatch(new SelectProject(project.id));
+    this.store.dispatch(new SelectProject(project ? project.id : null));
   }
 
   createProject(project){
