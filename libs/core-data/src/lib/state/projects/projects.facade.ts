@@ -3,9 +3,9 @@ import { Store,
          select } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { Project } from "../../projects/project.model";
-import { ProjectsState,
-         selectAllProjects } from "./projects.reducer";
-import { selectCurrentProject } from "..";
+import { ProjectsState } from "./projects.reducer";
+import { selectCurrentProject,
+         selectAllProjects } from "..";
 import { LoadProjects,
          SelectProject,
          AddProject,
