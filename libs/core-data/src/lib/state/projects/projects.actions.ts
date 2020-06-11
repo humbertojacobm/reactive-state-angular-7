@@ -1,5 +1,5 @@
 import { Action } from "@ngrx/store";
-import { Project } from "../../projects/project.model";
+import { ProjectStateModel } from "../../projects/project.model";
 
 // 01 define our possible action types
 export enum ProjectsActionTypes {
@@ -26,37 +26,37 @@ export class LoadProjects implements Action {
 
 export class ProjectsLoaded implements Action {
   readonly type = ProjectsActionTypes.ProjectsLoaded;
-  constructor(private payload: Project[]){}
+  constructor(private payload: ProjectStateModel[]){}
 }
 
 export class AddProject implements Action {
   readonly type = ProjectsActionTypes.AddProject;
-  constructor(public payload: Project){}
+  constructor(public payload: ProjectStateModel){}
 }
 
 export class ProjectAdded implements Action {
   readonly type = ProjectsActionTypes.ProjectAdded;
-  constructor(private payload: Project){}
+  constructor(private payload: ProjectStateModel){}
 }
 
 export class UpdateProject implements Action {
   readonly type = ProjectsActionTypes.UpdateProject;
-  constructor(public payload: Project){}
+  constructor(public payload: ProjectStateModel){}
 }
 
 export class ProjectUpdated implements Action {
   readonly type = ProjectsActionTypes.ProjectUpdated;
-  constructor(private payload: Project){}
+  constructor(private payload: ProjectStateModel){}
 }
 
 export class DeleteProject implements Action {
   readonly type = ProjectsActionTypes.DeleteProject;
-  constructor(public payload: Project){}
+  constructor(public payload: ProjectStateModel){}
 }
 
 export class ProjectDeleted implements Action {
   readonly type = ProjectsActionTypes.ProjectDeleted;
-  constructor(private payload: Project){}
+  constructor(private payload: ProjectStateModel){}
 }
 
 //03 expose projects actions as union type

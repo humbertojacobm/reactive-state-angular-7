@@ -3,7 +3,7 @@ import { select, Store } from '@ngrx/store';
 
 import * as CustomersActions from './customers.actions';
 import { CustomersState } from './customers.reducer';
-import { selectAllCustomers } from '..';
+import { selectAllCustomers } from "./customers.reducer.super.selectors";
 
 @Injectable({
   providedIn: 'root'

@@ -2,10 +2,10 @@ import { Injectable } from "@angular/core";
 import { Store,
          select } from "@ngrx/store";
 import { Observable } from "rxjs";
-import { Project } from "../../projects/project.model";
+import { ProjectStateModel } from "../../projects/project.model";
 import { ProjectsState } from "./projects.reducer";
 import { selectCurrentProject,
-         selectAllProjects } from "..";
+         selectAllProjects } from "./projects.reducer.super.selectors";
 import { LoadProjects,
          SelectProject,
          AddProject,
@@ -16,8 +16,8 @@ import { LoadProjects,
 
 @Injectable({providedIn: 'root'})
 export class ProjectsFacade{
-  projects$: Observable<Project[]>;
-  currentProject$: Observable<Project>;
+  projects$: Observable<ProjectStateModel[]>;
+  currentProject$: Observable<ProjectStateModel>;
 
   constructor(private store: Store<ProjectsState>){
     this.projects$ = store.pipe(select(selectAllProjects));

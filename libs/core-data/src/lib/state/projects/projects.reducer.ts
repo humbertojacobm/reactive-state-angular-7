@@ -1,10 +1,10 @@
-import { Project } from './../../projects/project.model';
+import { ProjectStateModel } from './../../projects/project.model';
 import { ProjectsActionTypes } from './projects.actions';
 import { EntityState,
          EntityAdapter,
          createEntityAdapter } from '@ngrx/entity';
 
-export const initialProjects: Project[] = [
+export const initialProjects: ProjectStateModel[] = [
   {
     id: '1',
     title: 'Project One',
@@ -39,12 +39,12 @@ const deleteProject = (projects, project) => projects.filter(w => project.id !==
 
 // 01 define the shape of our state
 
-export interface ProjectsState extends EntityState<Project> {
+export interface ProjectsState extends EntityState<ProjectStateModel> {
   selectedProjectId: string | null;
 }
 
 //02 create entity adapter
-export const adapter: EntityAdapter<Project> = createEntityAdapter<Project>();
+export const adapter: EntityAdapter<ProjectStateModel> = createEntityAdapter<ProjectStateModel>();
 
 //03 define the initial state
 export const initialState: ProjectsState = adapter.getInitialState({
@@ -74,13 +74,3 @@ export function projectsReducer(
       return state;
   }
 }
-
-//selectors
-
-export const getSelectedProjectId = (state: ProjectsState) => state.selectedProjectId;
-
-const { selectIds, selectEntities, selectAll} = adapter.getSelectors();
-
-export const selectProjectIds = selectIds;
-export const selectProjectEntities = selectEntities;
-export const selectAllProjects = selectAll;

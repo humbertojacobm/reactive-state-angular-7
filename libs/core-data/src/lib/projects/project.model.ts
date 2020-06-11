@@ -1,4 +1,4 @@
-export interface Project {
+export interface ProjectStateModel {
   id: string;
   title: string;
   details: string;
